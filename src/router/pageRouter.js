@@ -3,13 +3,16 @@ import { PageHome } from "../pages/PageHome.js";
 import { Page404 } from "../pages/Page404.js";
 import { PageMovies } from "../pages/PageMovies.js";
 import { PageCategories } from "../pages/PageCategories.js";
+import { PageMovieInner } from "../pages/PageMovieInner.js";
+import { PageRegister } from "../pages/PageRegister.js";
+import { Pagelogin } from "../pages/PageLogin.js";
 
 export const pageRouter = express.Router();
 
 pageRouter.get("/", (req, res) => res.send(new PageHome().render()));
 pageRouter.get("/movies", (req, res) => res.send(new PageMovies().render()));
 pageRouter.get("/movies/:movieTitle", (req, res) =>
-  res.send(new PageMovies().render())
+  res.send(new PageMovieInner(req).render())
 );
 pageRouter.get("/movies-by-category", (req, res) =>
   res.send(new PageCategories().render())
@@ -17,4 +20,11 @@ pageRouter.get("/movies-by-category", (req, res) =>
 pageRouter.get("/movies-by-category/:categoryName", (req, res) =>
   res.send(new PageMovies(req).render())
 );
+
+pageRouter.get("/register", (req, res) =>
+  res.send(new PageRegister().render())
+);
+
+pageRouter.get("/login", (req, res) => res.send(new Pagelogin().render()));
+
 pageRouter.get("*error", (req, res) => res.send(new Page404().render()));
