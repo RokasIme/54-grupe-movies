@@ -5,7 +5,7 @@ import { PageMovies } from "../pages/PageMovies.js";
 import { PageCategories } from "../pages/PageCategories.js";
 import { PageMovieInner } from "../pages/PageMovieInner.js";
 import { PageRegister } from "../pages/PageRegister.js";
-import { Pagelogin } from "../pages/PageLogin.js";
+import { PageLogin } from "../pages/PageLogin.js";
 
 export const pageRouter = express.Router();
 
@@ -24,7 +24,6 @@ pageRouter.get("/movies-by-category/:categoryName", (req, res) =>
 pageRouter.get("/register", (req, res) =>
   res.send(new PageRegister().render())
 );
-
-pageRouter.get("/login", (req, res) => res.send(new Pagelogin().render()));
+pageRouter.get("/login", (req, res) => res.send(new PageLogin().render()));
 
 pageRouter.get("*error", (req, res) => res.send(new Page404().render()));
