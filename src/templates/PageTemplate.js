@@ -23,7 +23,7 @@ export class PageTemplate {
   }
 
   header() {
-    const userIsLoggedIn = false;
+    const userIsLoggedIn = this.req.headers.cookie !== undefined;
 
     const publicMenu = [
       { href: "/", text: "Home" },
@@ -107,8 +107,6 @@ export class PageTemplate {
   }
 
   render() {
-    console.log(this.req.headers.cookie);
-
     return `
           <!DOCTYPE html>
           <html lang="en">
