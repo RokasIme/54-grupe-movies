@@ -1,4 +1,5 @@
 import { moviesData } from "../data/movies.js";
+import { getMovieBySlug } from "../db/getMovieBySlug.js";
 import { formatMovieDuration } from "../lib/formatMovieDuration.js";
 import { PageTemplate } from "../templates/PageTemplate.js";
 
@@ -37,7 +38,7 @@ export class PageMovieInner extends PageTemplate {
                         }</h1>
                         <p class="lead">${movie.description}</p>
                         <p class="lead">Duration: ${formatMovieDuration(
-                          movie.durationInMinutes
+                          movie.duration
                         )}</p>
                         <p class="lead">Genre: <a href="/movies-by-category/${movie.category.toLowerCase()}">${
       movie.category
@@ -47,21 +48,15 @@ export class PageMovieInner extends PageTemplate {
             </div>`;
   }
 
-  main() {
-    let movieObj = null;
-
-    for (const movie of moviesData) {
-      if (movie.slug === this.req.params.movieTitle) {
-        movieObj = movie;
-        break;
-      }
-    }
+  async main() {
+    const slug = this.req.params.movieTitle;
+    const data = await getMovieBySlug(slug);
 
     return `
             <main>
                 ${
-                  movieObj
-                    ? this.movieSection(movieObj)
+                  data.length
+                    ? this.movieSection(data[0])
                     : this.notFoundSection()
                 }
             </main>`;

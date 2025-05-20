@@ -1,4 +1,4 @@
-import { moviesData } from "../data/movies.js";
+import { getAllMovies } from "../db/getAllMovies.js";
 import { formatMovieDuration } from "../lib/formatMovieDuration.js";
 import { PageTemplate } from "../templates/PageTemplate.js";
 
@@ -8,8 +8,10 @@ export class PageMovies extends PageTemplate {
     this.activeMenuIndex = 1;
   }
 
-  moviesList(category) {
+  async moviesList(category) {
     let HTML = "";
+
+    const moviesData = await getAllMovies();
 
     for (const item of moviesData) {
       if (item.category.toLowerCase() === category || category === "") {
@@ -20,18 +22,18 @@ export class PageMovies extends PageTemplate {
                               item.thumbnail
                             }" class="movie-card-thumbnail card-img-top" style="height: 225px;">
                             <div class="card-body">
-                                <a href="/movies/${item.slug}" class="h4">${
+                                <a href="/movies/${item.url_slug}" class="h4">${
           item.title
         }</a>
                                 <p class="card-text">${item.description}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="/movies/${
-                                          item.slug
+                                          item.url_slug
                                         }" class="btn btn-sm btn-outline-secondary">Read more</a>
                                     </div>
                                     <small class="text-body-secondary">${formatMovieDuration(
-                                      item.durationInMinutes
+                                      item.duration
                                     )}</small>
                                 </div>
                             </div>
@@ -58,7 +60,7 @@ export class PageMovies extends PageTemplate {
             </div>`;
   }
 
-  main() {
+  async main() {
     let category = "";
 
     if (this.req?.params?.categoryName) {
@@ -78,7 +80,7 @@ export class PageMovies extends PageTemplate {
                         </div>
                     </div>
                 </div>
-                ${this.moviesList(category)}
+                ${await this.moviesList(category)}
             </main>`;
   }
 }
