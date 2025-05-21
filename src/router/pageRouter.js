@@ -8,6 +8,7 @@ import { PageRegister } from "../pages/PageRegister.js";
 import { PageLogin } from "../pages/PageLogin.js";
 import { PageLogout } from "../pages/PageLogout.js";
 import { PageCategoryInner } from "../pages/PageCategoryInner.js";
+import { PageDashboard } from "../pages/pageDashboard.js";
 
 export const pageRouter = express.Router();
 
@@ -35,6 +36,9 @@ pageRouter.get("/login", async (req, res) =>
 );
 pageRouter.get("/logout", async (req, res) =>
   res.send(await new PageLogout(req).render())
+);
+pageRouter.get("/dashboard", async (req, res) =>
+  res.send(await new PageDashboard(req).render())
 );
 
 pageRouter.get("*error", async (req, res) =>
