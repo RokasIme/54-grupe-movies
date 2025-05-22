@@ -1,14 +1,18 @@
 import express from "express";
-import { PageHome } from "../pages/PageHome.js";
-import { Page404 } from "../pages/Page404.js";
-import { PageMovies } from "../pages/PageMovies.js";
-import { PageCategories } from "../pages/PageCategories.js";
-import { PageMovieInner } from "../pages/PageMovieInner.js";
-import { PageRegister } from "../pages/PageRegister.js";
-import { PageLogin } from "../pages/PageLogin.js";
-import { PageLogout } from "../pages/PageLogout.js";
-import { PageCategoryInner } from "../pages/PageCategoryInner.js";
-import { PageDashboard } from "../pages/pageDashboard.js";
+
+// public
+import { PageHome } from "../pages/public/PageHome.js";
+import { Page404 } from "../pages/public/Page404.js";
+import { PageMovies } from "../pages/public/PageMovies.js";
+import { PageCategories } from "../pages/public/PageCategories.js";
+import { PageMovieInner } from "../pages/public/PageMovieInner.js";
+import { PageRegister } from "../pages/public/PageRegister.js";
+import { PageLogin } from "../pages/public/PageLogin.js";
+import { PageLogout } from "../pages/public/PageLogout.js";
+import { PageCategoryInner } from "../pages/public/PageCategoryInner.js";
+
+// Admin
+import { PageDashboard } from "../pages/admin/pageDashboard.js";
 
 export const pageRouter = express.Router();
 
