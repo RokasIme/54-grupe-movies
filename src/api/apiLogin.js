@@ -71,5 +71,6 @@ export async function apiLogin(req, res) {
   return res.set("Set-Cookie", cookie.join("; ")).json({
     status: "success",
     msg: "Jus buvote sekmingai prijungti prie sistemos",
+    redirectTo: "/admin",
   });
 }
