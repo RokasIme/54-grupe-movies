@@ -1,11 +1,15 @@
 import express from "express";
 
 import { PageDashboard } from "../pages/admin/PageDashboard.js";
-import { PageAdminCategories } from "../pages/admin/PageCategories.js";
-import { PageAdminMovies } from "../pages/admin/PageMovies.js";
+import { PageAdminCategories } from "../pages/admin/PageCategoriesAll.js";
+import { PageAdminMovies } from "../pages/admin/PageMoviesAll.js";
 import { PageAdminNewCategory } from "../pages/admin/PageNewCategory.js";
 import { PageAdminNewMovie } from "../pages/admin/PageNewMovie.js";
 import { PageAdminMovieInner } from "../pages/admin/PageMovieInner.js";
+import { PageAdminCategoriesDraft } from "../pages/admin/PageCategoriesDraft.js";
+import { PageAdminCategoriesPublished } from "../pages/admin/PageCategoriesPublished.js";
+import { PageAdminMoviesPublished } from "../pages/admin/PageMoviesPublished.js";
+import { PageAdminMoviesDraft } from "../pages/admin/PageMoviesDraft.js";
 
 export const adminRouter = express.Router();
 
@@ -20,10 +24,10 @@ adminRouter.get("/categories/new", async (req, res) =>
   res.send(await new PageAdminNewCategory(req).render())
 );
 adminRouter.get("/categories/published", async (req, res) =>
-  res.send(await new PageAdminNewCategory(req).render())
+  res.send(await new PageAdminCategoriesPublished(req).render())
 );
 adminRouter.get("/categories/draft", async (req, res) =>
-  res.send(await new PageAdminNewCategory(req).render())
+  res.send(await new PageAdminCategoriesDraft(req).render())
 );
 adminRouter.get("/categories/:urlSlug", async (req, res) =>
   res.send(await new PageAdminNewCategory(req).render())
@@ -39,10 +43,10 @@ adminRouter.get("/movies/new", async (req, res) =>
   res.send(await new PageAdminNewMovie(req).render())
 );
 adminRouter.get("/movies/published", async (req, res) =>
-  res.send(await new PageAdminNewMovie(req).render())
+  res.send(await new PageAdminMoviesPublished(req).render())
 );
 adminRouter.get("/movies/draft", async (req, res) =>
-  res.send(await new PageAdminNewMovie(req).render())
+  res.send(await new PageAdminMoviesDraft(req).render())
 );
 adminRouter.get("/movies/:urlSlug", async (req, res) =>
   res.send(await new PageAdminMovieInner(req).render())

@@ -1,4 +1,4 @@
-import { getMovieBySlug } from "../../db/getMovieBySlug.js";
+import { getMovieBySlug } from "../../db/public/movies.js";
 import { formatMovieDuration } from "../../lib/formatMovieDuration.js";
 import { PageTemplate } from "../../templates/PageTemplate.js";
 
@@ -39,8 +39,8 @@ export class PageMovieInner extends PageTemplate {
                         <p class="lead">Duration: ${formatMovieDuration(
                           movie.duration
                         )}</p>
-                        <p class="lead">Genre: <a href="/movies-by-category/${movie.category.toLowerCase()}">${
-      movie.category
+                        <p class="lead">Genre: <a href="/movies-by-category/${movie.categoryUrlSlug.toLowerCase()}">${
+      movie.categoryName
     }</a></p>
                     </div>
                 </div>
