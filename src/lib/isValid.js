@@ -21,8 +21,8 @@ export class IsValid {
       return [true, "Reikalingi laukai yra: " + names];
     }
 
-    for (const { field, validation } of requiredFields) {
-      const [err, msg] = validation(clientData[field]);
+    for (const { field, validation, options } of requiredFields) {
+      const [err, msg] = validation(clientData[field], options);
 
       if (err) {
         return [err, msg];
@@ -248,6 +248,21 @@ export class IsValid {
 
     if (errors.length) {
       return [true, `Rasti neleistini simboliai: ${errors.join(", ")}.`];
+    }
+
+    return [false, "Ok"];
+  }
+
+  static includesInList(text, allowedValues) {
+    if (
+      typeof text !== "string" ||
+      text === "" ||
+      !allowedValues.includes(text)
+    ) {
+      return [
+        true,
+        `Turi buti tinkamas statusas: ${allowedValues.join(", ")}.`,
+      ];
     }
 
     return [false, "Ok"];
