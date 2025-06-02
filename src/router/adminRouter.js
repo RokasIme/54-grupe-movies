@@ -4,7 +4,7 @@ import { PageDashboard } from "../pages/admin/PageDashboard.js";
 import { PageAdminCategories } from "../pages/admin/PageCategoriesAll.js";
 import { PageAdminMovies } from "../pages/admin/PageMoviesAll.js";
 import { PageAdminCategoryNew } from "../pages/admin/PageCategoryNew.js";
-import { PageAdminNewMovie } from "../pages/admin/PageNewMovie.js";
+import { PageAdminMovieNew } from "../pages/admin/PageMovieNew.js";
 import { PageAdminMovieInner } from "../pages/admin/PageMovieInner.js";
 import { PageAdminCategoriesDraft } from "../pages/admin/PageCategoriesDraft.js";
 import { PageAdminCategoriesPublished } from "../pages/admin/PageCategoriesPublished.js";
@@ -39,7 +39,7 @@ adminRouter.get("/movies", async (req, res) =>
   res.send(await new PageAdminMovies(req).render())
 );
 adminRouter.get("/movies/new", async (req, res) =>
-  res.send(await new PageAdminNewMovie(req).render())
+  res.send(await new PageAdminMovieNew(req).render())
 );
 adminRouter.get("/movies/published", async (req, res) =>
   res.send(await new PageAdminMoviesPublished(req).render())
