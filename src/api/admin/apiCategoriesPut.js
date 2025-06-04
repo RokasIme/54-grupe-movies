@@ -47,7 +47,7 @@ export async function apiCategoriesPut(req, res) {
     console.log(error);
     return res.json({
       status: "error",
-      msg: "Serverio klaida, pabandykite kategorija sukurti veliau",
+      msg: "Serverio klaida, pabandykite kategorija atnaujinti veliau",
     });
   }
 
@@ -66,7 +66,7 @@ export async function apiCategoriesPut(req, res) {
     console.log(error);
     return res.json({
       status: "error",
-      msg: "Serverio klaida, pabandykite kategorija sukurti veliau",
+      msg: "Serverio klaida, pabandykite kategorija atnaujinti veliau",
     });
   }
 
@@ -85,7 +85,7 @@ export async function apiCategoriesPut(req, res) {
     console.log(error);
     return res.json({
       status: "error",
-      msg: "Serverio klaida, pabandykite kategorija sukurti veliau",
+      msg: "Serverio klaida, pabandykite kategorija atnaujinti veliau",
     });
   }
 

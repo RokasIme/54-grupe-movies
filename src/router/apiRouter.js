@@ -7,6 +7,8 @@ import { isAdminAPI } from "../middleware/isAdminAPI.js";
 import { apiCategoriesPut } from "../api/admin/apiCategoriesPut.js";
 import { apiCategoriesDelete } from "../api/admin/apiCategoriesDelete.js";
 import { apiMoviesPost } from "../api/admin/apiMoviesPost.js";
+import { apiMoviesDelete } from "../api/admin/apiMoviesDelete.js";
+import { apiMoviesPut } from "../api/admin/apiMoviesPut.js";
 
 export const apiRouter = express.Router();
 
@@ -19,3 +21,5 @@ apiRouter.put("/api/admin/categories/:id", isAdminAPI, apiCategoriesPut);
 apiRouter.delete("/api/admin/categories/:id", isAdminAPI, apiCategoriesDelete);
 
 apiRouter.post("/api/admin/movies", isAdminAPI, apiMoviesPost);
+apiRouter.put("/api/admin/movies/:id", isAdminAPI, apiMoviesPut);
+apiRouter.delete("/api/admin/movies/:id", isAdminAPI, apiMoviesDelete);
