@@ -48,9 +48,11 @@ export async function apiMoviesPut(req, res) {
     });
   }
 
-  const { name, url, description, status, hours, minutes, category } = req.body;
+  const { name, url, description, status, hours, minutes, category, image } =
+    req.body;
   const duration = (hours ?? 0) * 60 + (minutes ?? 0);
   const statusIndex = status === "publish" ? 1 : 0;
+  const imageFileName = image.slice(22);
 
   // Tikriname, ar egzistuoja irasas, kuri keltiname redaguoti
   try {
@@ -99,7 +101,7 @@ export async function apiMoviesPut(req, res) {
     const [result] = await connection.query(sql, [
       name,
       url,
-      "",
+      imageFileName,
       description,
       duration,
       category,
